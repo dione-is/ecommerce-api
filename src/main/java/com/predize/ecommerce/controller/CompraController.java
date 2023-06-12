@@ -26,17 +26,7 @@ public class CompraController {
         }
     }
 
-//    @GetMapping()
-//    public ResponseEntity<List<Compra>> getAllCompra() {
-//        try {
-//            return ResponseEntity.ok(service.getAll());
-//        } catch (Exception e) {
-//            System.err.println("CompraController ::: getAllCompra :::" + e.getMessage());
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-//        }
-//    }
-
-    @PostMapping()
+    @PostMapping("/")
     public ResponseEntity<Compra> saveCompra(@RequestBody Compra Compra) {
         try {
             return ResponseEntity.ok(service.save(Compra));
@@ -45,24 +35,4 @@ public class CompraController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
-
-//    @PutMapping()
-//    public ResponseEntity<Compra> updateCompra(@RequestBody Compra Compra) {
-//        try {
-//            return ResponseEntity.ok(service.update(Compra));
-//        } catch (Exception e) {
-//            System.err.println("CompraController ::: updateCompra :::" + e.getMessage());
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-//        }
-//    }
-
-//    @DeleteMapping()
-//    public ResponseEntity<Boolean> deleteCompra(@PathVariable Long id) {
-//        try {
-//            return ResponseEntity.ok(service.delete(id));
-//        } catch (Exception e) {
-//            System.err.println("CompraController ::: deleteCompra :::" + e.getMessage());
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-//        }
-//    }
 }
