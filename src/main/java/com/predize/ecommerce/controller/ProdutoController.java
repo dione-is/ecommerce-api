@@ -12,13 +12,13 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/produto/")
+@RequestMapping("/api/produto")
 public class ProdutoController {
 
     @Autowired
     private ProdutoService service;
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Produto> getProduto(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(service.get(id));
@@ -28,7 +28,17 @@ public class ProdutoController {
         }
     }
 
-    @GetMapping()
+    @GetMapping("/buscar-por")
+    public ResponseEntity<List<Produto>> getProdutoByNome(@RequestParam (value = "nome") String nome) {
+        try {
+            return ResponseEntity.ok(service.getByNome(nome));
+        } catch (Exception e) {
+            System.err.println("ProdutoController ::: getProduto :::" + e.getMessage());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
+
+    @GetMapping("/")
     public ResponseEntity<List<Produto>> getAllProduto() {
         try {
             return ResponseEntity.ok(service.getAll());
@@ -38,7 +48,7 @@ public class ProdutoController {
         }
     }
 
-    @PostMapping()
+    @PostMapping("/")
     public ResponseEntity<Produto> saveProduto(@RequestBody Produto produto) {
         try {
             return ResponseEntity.ok(service.save(produto));
@@ -48,7 +58,7 @@ public class ProdutoController {
         }
     }
 
-    @PutMapping()
+    @PutMapping("/")
     public ResponseEntity<Produto> updateProduto(@RequestBody Produto produto) {
         try {
             return ResponseEntity.ok(service.update(produto));
@@ -58,7 +68,7 @@ public class ProdutoController {
         }
     }
 
-    @DeleteMapping()
+    @DeleteMapping("{id}")
     public ResponseEntity<Boolean> deleteProduto(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(service.delete(id));
