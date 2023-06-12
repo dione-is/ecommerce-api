@@ -14,7 +14,7 @@
             <column name="nome" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="preco" type="DECIMAL(6,2)">
+            <column name="preco" type="DECIMAL(8,2)">
                 <constraints nullable="false"/>
             </column>
             <column name="quantidade" type="INTEGER">
@@ -35,7 +35,7 @@
             <column name="compra_id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false"/>
             </column>
-            <column name="valortotal" type="DECIMAL(6,2)">
+            <column name="valortotal" type="DECIMAL(8,2)">
                 <constraints nullable="false"/>
             </column>
             <column name="datacompra" type="DATE">
